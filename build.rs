@@ -54,7 +54,18 @@ fn main() {
             .emit_builtins()
             .ctypes_prefix("libc")
             .raw_line("extern crate libc;")
-            .header(gen_h_path.to_str().unwrap());
+            .header(gen_h_path.to_str().unwrap())
+            // https://github.com/rust-lang-nursery/rust-bindgen/issues/687
+            .hide_type("FP_NAN")
+            .hide_type("FP_INFINITE")
+            .hide_type("FP_ZERO")
+            .hide_type("FP_SUBNORMAL")
+            .hide_type("FP_NORMAL")
+            .hide_type("FP_INT_UPWARD")
+            .hide_type("FP_INT_DOWNWARD")
+            .hide_type("FP_INT_TOWARDZERO")
+            .hide_type("FP_INT_TONEARESTFROMZERO")
+            .hide_type("FP_INT_TONEAREST");
         for include_path in library.include_paths {
             builder = builder.clang_arg(format!("-I{}", include_path.to_string_lossy()));
         }

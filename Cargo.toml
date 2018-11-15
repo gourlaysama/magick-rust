@@ -1,5 +1,5 @@
 [package]
-name = "magick_rust"
+name = "magick_rust_6"
 version = "0.6.6"
 authors = ["Nathan Fiedler <nathanfiedler@fastmail.fm>"]
 description = "Selection of Rust bindings for the ImageMagick library."
